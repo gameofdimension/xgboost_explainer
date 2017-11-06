@@ -13,6 +13,13 @@ tree_lst = xgb_exp.model2table(bst)
 leaf_lst = bst.predict(sample, pred_leaf=True)
 # sum the logit-odds contribution of each feature
 dist = xgb_exp.logit_contribution(tree_lst, leaf_lst[0])
+
+# print result
+sum_logit = 0.0
+for k in dist:
+    sum_logit += dist[k]
+    fn = feature_map[int(k[1:])] if k != "intercept" else k
+    print(fn + ":", dist[k])
 ```
 
 ### sample result
