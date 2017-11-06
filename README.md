@@ -5,13 +5,13 @@
 ### usage:
 ```python
 ...
-# calculate logit-odds contribution of each leaf of each tree
+# calculate logit-odds of each node of each tree
 tree_lst = xgb_exp.model2table(bst)
 
 ...
 
 leaf_lst = bst.predict(sample, pred_leaf=True)
-# sum the logit-odds contribution of every feature
+# sum the logit-odds contribution of each feature
 dist = xgb_exp.logit_contribution(tree_lst, leaf_lst[0])
 ```
 
