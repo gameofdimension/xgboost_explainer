@@ -82,6 +82,7 @@ def model2table(bst, eta=0.3, lmda=1.0):
         check_params(t, eta, lmda)
         for j in reversed(range(len(t))):
             node = t[j]
+            if not bool(node): continue
             if node['is_leaf']:
                 G = -1.*node['leaf']*(node['cover']+lmda)/eta
             else:
@@ -91,6 +92,7 @@ def model2table(bst, eta=0.3, lmda=1.0):
     for t in tree_lst:
         for j in reversed(range(len(t))):
             node = t[j]
+            if not bool(node): continue
             if node['parent'] is None:
                 node['logit_delta'] = node['logit'] - .0
             else:
