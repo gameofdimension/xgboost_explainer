@@ -76,7 +76,8 @@ def model2table(bst, eta=0.3, lmda=1.0):
             # node_lst.append(d)
             node_lst[node_idx] = d
         for j, node in enumerate(node_lst):
-            node_lst[j]['parent'] = parent[node_lst[j]['node']]
+            if bool(node):
+                node_lst[j]['parent'] = parent[node_lst[j]['node']]
         tree_lst[i] = node_lst
     for t in tree_lst:
         check_params(t, eta, lmda)
