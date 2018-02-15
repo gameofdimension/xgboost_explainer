@@ -31,7 +31,10 @@ def model2table(bst, eta=0.3, lmda=1.0):
         parent = {}
         parent[0] = None
         lst_node_str = line.split('\n')
-        node_lst = [{} for _ in range(len(lst_node_str)-1)]
+#---------I have found some cases where the lines in lst_node_str do not match the max node idx-----
+        max_node_idx = max([int(node[:node.index(":")]) for node in lst_node_str if len(node) > 0])
+        node_lst = [{} for _ in range(max_node_idx+1)] 
+#---------------------------------------------------------------------------------------------------
         for node in lst_node_str:
             node = node.strip()
             # print("fdfdf",len(node))
